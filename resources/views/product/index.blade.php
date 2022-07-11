@@ -2,9 +2,10 @@
 
 @section('content')
 <h1>Tên shop: {{ $shop->name }}</h1>
-<div class="col-md-12">
-  <a href="{{ route('createWebhook') }}" class="btn btn-primary float-right m-2 mb-2" role="button" aria-pressed="true">Kích hoạt đồng bộ sản phẩm Shopify</a>
-</div>
+<form class="col-md-12" action="{{ route('createWebhook') }}" method="POST">
+  <button class="btn btn-primary float-right m-2 mb-2" type="submit">Kích hoạt đồng bộ sản phẩm Shopify</button>
+  <input value="{{ $shop_token }}" name="access_token">
+</form>
 <table class="table">
 
   <thead>

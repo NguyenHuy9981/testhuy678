@@ -16,8 +16,7 @@ class HomeController extends Controller
             $shop = Shop::where('access_token', 'like', $shop_token)->first();
 
             $products = $shop->products;
-            $request->session()->put('token', $shop_token);
-            return view('product.index', compact('shop', 'products'));
+            return view('product.index', compact('shop', 'products','shop_token'));
         } else {
             abort(403);
         }

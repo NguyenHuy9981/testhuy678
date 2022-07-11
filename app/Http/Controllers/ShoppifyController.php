@@ -129,12 +129,11 @@ class ShoppifyController extends Controller
         ];
 
         foreach ($topics as $value) {
-            $shop_token = $request->session()->get('token');
             $url = 'https://testhuy678.myshopify.com/admin/api/2022-07/webhooks.json';
             $client = new Client();
-            $$client->request('POST', $url, [
+            $client->request('POST', $url, [
                 'headers' => [
-                    'X-Shopify-Access-Token' => $shop_token,
+                    'X-Shopify-Access-Token' => $request['access_token'],
                 ],
                 'form_params' => [
                     'webhook' =>
@@ -151,7 +150,7 @@ class ShoppifyController extends Controller
             ]);
         }
 
-        return view('webhook.success');
+        return redirect(route('home'));
     }
 
     public function createProduct(Request $request)

@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/Webhook', [ShoppifyController::class, 'createWebhook'])->name('createWebhook');
+Route::post('/Webhook', [ShoppifyController::class, 'createWebhook'])->name('createWebhook');
 
 Route::post('/createProduct', [ShoppifyController::class, 'createProduct'])->name('createProduct');
 
