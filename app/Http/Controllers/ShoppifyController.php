@@ -68,7 +68,6 @@ class ShoppifyController extends Controller
         $shop = json_decode($resShop->getBody())->shop;
 
 
-
         if (!Shop::where('shopify_domain', 'like', $shop_name)->exists()) {
 
             $shop_save = Shop::create([
@@ -112,45 +111,47 @@ class ShoppifyController extends Controller
 
     public function createWebhook(Request $request)
     {
-
-        $topics = [
-            [
-                'topic' => 'products/create',
-                'address' => 'https://19df-2001-ee0-5005-94b0-5971-5482-b995-2cc4.ap.ngrok.io/testhuy678/api/createProduct',
-            ],
-            [
-                'topic' => 'products/update',
-                'address' => 'https://19df-2001-ee0-5005-94b0-5971-5482-b995-2cc4.ap.ngrok.io/testhuy678/api/updateProduct',
-            ],
-            [
-                'topic' => 'products/delete',
-                'address' => 'https://19df-2001-ee0-5005-94b0-5971-5482-b995-2cc4.ap.ngrok.io/testhuy678/api/deleteProduct',
-            ],
-        ];
-
-        foreach ($topics as $value) {
-            $url = 'https://testhuy678.myshopify.com/admin/api/2022-07/webhooks.json';
-            $client = new Client();
-            $client->request('POST', $url, [
-                'headers' => [
-                    'X-Shopify-Access-Token' => $request['access_token'],
+        if (isset($request['access_token']) && !empty($request['access_token'])) {
+            $topics = [
+                [
+                    'topic' => 'products/create', // Khúc dưới address em ghi route('tên route') nhưng bị lỗi nên để tạm link a
+                    'address' => 'https://19df-2001-ee0-5005-94b0-5971-5482-b995-2cc4.ap.ngrok.io/testhuy678/api/createProduct',
                 ],
-                'form_params' => [
-                    'webhook' =>
-                    [
+                [
+                    'topic' => 'products/update',
+                    'address' => 'https://19df-2001-ee0-5005-94b0-5971-5482-b995-2cc4.ap.ngrok.io/testhuy678/api/updateProduct',
+                ],
+                [
+                    'topic' => 'products/delete',
+                    'address' => 'https://19df-2001-ee0-5005-94b0-5971-5482-b995-2cc4.ap.ngrok.io/testhuy678/api/deleteProduct',
+                ],
+            ];
 
-                        'topic' => $value['topic'],
-                        'format' => 'json',
-                        'address' => $value['address'],
-
+            foreach ($topics as $value) {
+                $url = 'https://testhuy678.myshopify.com/admin/api/2022-07/webhooks.json';
+                $client = new Client();
+                $client->request('POST', $url, [
+                    'headers' => [
+                        'X-Shopify-Access-Token' => $request['access_token'],
                     ],
+                    'form_params' => [
+                        'webhook' =>
+                        [
+
+                            'topic' => $value['topic'],
+                            'format' => 'json',
+                            'address' => $value['address'],
+
+                        ],
 
 
-                ]
-            ]);
-        }
+                    ]
+                ]);
+            }
 
-        return redirect(route('home'));
+            return view('webhook.success');
+        } else
+            return view('webhook.fail');
     }
 
     public function createProduct(Request $request)
@@ -160,7 +161,7 @@ class ShoppifyController extends Controller
         Product::create([
             'title' => $request['title'],
             'description' => $request['body_html'],
-            'image' => $request['image']['src'],
+            'image' => isset($request['image']) && !empty($request['image']) ? $request['image']['src'] : null,
             'shop_name' => $request['vendor'],
             'id_product_shopify' => $request['id']
 
@@ -177,7 +178,7 @@ class ShoppifyController extends Controller
         Product::where('id_product_shopify', $request['id'])->update([
             'title' => $request['title'],
             'description' => $request['body_html'],
-            'image' => $request['image']['src'],
+            'image' => isset($request['image']) && !empty($request['image']) ? $request['image']['src'] : null,
             'shop_name' => $request['vendor'],
             'id_product_shopify' => $request['id']
         ]);
