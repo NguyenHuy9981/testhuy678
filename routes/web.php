@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShoppifyController;
 
 /*
@@ -22,3 +23,7 @@ Route::get('/authenticate', [ShoppifyController::class, 'authenticate']);
 
 
 Route::post('/admin/oauth/access_token', [ShoppifyController::class, 'getshop'])->name('getshop');
+
+
+// Home //
+Route::get('/product', [HomeController::class, 'index'])->name('product.index');
