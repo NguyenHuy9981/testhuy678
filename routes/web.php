@@ -34,7 +34,7 @@ Route::prefix('product')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('product.index');
 
     // Đồng bộ dữ liệu từ phía App lên Shopify
-    Route::get('/form/create', [HomeController::class, 'createProduct'])->name('product.create');
+    Route::get('/formCreate', [HomeController::class, 'createProduct'])->name('product.create');
 
     Route::post('/create', [HomeController::class, 'createProduct_UpShopify'])->name('createProduct_UpShopify');
 
