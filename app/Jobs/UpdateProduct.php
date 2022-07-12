@@ -2,19 +2,18 @@
 
 namespace App\Jobs;
 
+use App\Models\Product;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
-use App\Models\Product;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 
-class CreateProduct implements ShouldQueue
+class UpdateProduct implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    private $request;
+
     /**
      * Create a new job instance.
      *
@@ -33,14 +32,13 @@ class CreateProduct implements ShouldQueue
     public function handle()
     {
         // $product = $this->request;
-
-        // Product::create([
+        
+        // Product::where('id_product_shopify', $product['id'])->update([
         //     'title' => $product['title'],
         //     'description' => $product['body_html'],
         //     'image' => isset($product['image']) && !empty($product['image']) ? $product['image']['src'] : null,
         //     'shop_name' => $product['vendor'],
         //     'id_product_shopify' => $product['id']
-
         // ]);
     }
 }

@@ -25,4 +25,22 @@ Route::post('/admin/oauth/access_token', [ShoppifyController::class, 'getshop'])
 
 
 // Home //
-Route::get('/product', [HomeController::class, 'index'])->name('product.index');
+
+
+
+
+Route::prefix('product')->group(function () {
+
+    Route::get('/', [HomeController::class, 'index'])->name('product.index');
+
+    // Đồng bộ dữ liệu từ phía App lên Shopify
+    Route::get('/form/create', [HomeController::class, 'createProduct'])->name('product.create');
+
+    Route::post('/create', [HomeController::class, 'createProduct_UpShopify'])->name('createProduct_UpShopify');
+
+    Route::get('/edit/{id}', [HomeController::class, 'editProduct'])->name('product.edit');
+
+    Route::post('/update/{id}', [HomeController::class, 'updateProduct_UpShopify'])->name('updateProduct_UpShopify');
+
+    Route::get('/delete/{id}', [HomeController::class, 'deleteProduct_UpShopify'])->name('deleteProduct_UpShopify');
+});

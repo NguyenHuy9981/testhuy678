@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShoppifyController;
+use App\Http\Controllers\WebhookProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// WEBHOOK
-Route::post('/Webhook', [ShoppifyController::class, 'createWebhook'])->name('createWebhook');
+//  Webhook đồng bộ dữ liệu từ Shopify xuống App
+Route::any('/Webhook', [WebhookProductController::class, 'createWebhook'])->name('createWebhook');
 
-Route::post('/createProduct', [ShoppifyController::class, 'createProduct'])->name('createProduct');
+Route::any('/createProduct', [WebhookProductController::class, 'createProduct'])->name('createProduct');
 
-Route::post('/updateProduct', [ShoppifyController::class, 'updateProduct'])->name('updateProduct');
+Route::any('/updateProduct', [WebhookProductController::class, 'updateProduct'])->name('updateProduct');
 
-Route::post('/deleteProduct', [ShoppifyController::class, 'deleteProduct'])->name('deleteProduct');
+Route::any('/deleteProduct', [WebhookProductController::class, 'deleteProduct'])->name('deleteProduct');

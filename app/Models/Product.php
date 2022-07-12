@@ -10,7 +10,6 @@ class Product extends Model
     use HasFactory;
     
     protected $fillable = [
-        'id',
         'title',
         'description',
         'image',
@@ -18,8 +17,5 @@ class Product extends Model
         'shop_name'
     ];
 
-    public function images()
-    {
-        return $this->hasMany(Image::class, 'product_id', 'id_product_shopify');
-    }
+
 }
