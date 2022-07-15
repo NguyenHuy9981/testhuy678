@@ -19,6 +19,14 @@ class ShoppifyController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'shop_name' => 'required',
+            ],
+            [
+                'required' => 'Tên shop không được để trống',
+            ]
+        );
 
         $copes = 'read_products,write_products';
         $redirect_uri = '' . config('app.url') . '/testhuy678/authenticate';
@@ -81,14 +89,16 @@ class ShoppifyController extends Controller
                 'shop_created_at' => substr($shop->created_at, 0, -15)
             ]);
 
-            foreach ($products as $product) {
+            if (!empty($products)) {
+                foreach ($products as $product) {
 
-                $shop_save->products()->create([
-                    'title' => $product->title,
-                    'description' => $product->body_html,
-                    'image' => isset($product->image) && !empty($product->image) ? $product->image->src : null,
-                    'id_product_shopify' => $product->id
-                ]);
+                    $shop_save->products()->create([
+                        'title' => $product->title,
+                        'description' => $product->body_html,
+                        'image' => isset($product->image) && !empty($product->image) ? $product->image->src : null,
+                        'id_product_shopify' => $product->id
+                    ]);
+                }
             }
         }
     }

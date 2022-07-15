@@ -27,8 +27,6 @@ Route::post('/admin/oauth/access_token', [ShoppifyController::class, 'getshop'])
 // Home //
 
 
-
-
 Route::prefix('product')->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('product.index');

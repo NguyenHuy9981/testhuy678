@@ -2,17 +2,20 @@
 
 
 @section('title')
-  <title>Trang chủ</title>
+<title>Trang chủ</title>
 @endsection
 
 
 
 @section('content')
 <form class=" col-md-6 mt-5 ml-4" action="{{ route('store') }}" method="POST">
-    @csrf
+  @csrf
   <div class="form-group">
     <label for="exampleInputEmail1">Nhập tên shop</label>
     <input type="text" class="form-control" id="exampleInputEmail1" name="shop_name">
+    @error('shop_name')
+    <div class="form-text text-danger">{{ $message }}</div>
+    @enderror
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -35,4 +38,3 @@
 </script>
 
 @endsection -->
-
