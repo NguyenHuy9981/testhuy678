@@ -53,8 +53,10 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-    'api_key' => env('API_KEY'),
-    'api_secret' => env('API_SECRET'),
+    'shopify_api_key' => env('SHOPIFY_API_KEY'),
+    'shopify_api_secret' => env('SHOPIFY_API_SECRET'),
+    'shopify_app_scopes' =>env('SHOPIFY_APP_SCOPES'),
+    
 
     'asset_url' => env('ASSET_URL', null),
 

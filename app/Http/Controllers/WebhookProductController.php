@@ -29,7 +29,7 @@ class WebhookProductController extends Controller
             ];
 
             foreach ($topics as $value) {
-                $url = 'https://testhuy678.myshopify.com/admin/api/2022-07/webhooks.json';
+                $url = 'https://' . $request['shop_name'] . '/admin/api/2022-07/webhooks.json';
                 $client = new Client();
                 $client->request('POST', $url, [
                     'headers' => [
@@ -59,7 +59,7 @@ class WebhookProductController extends Controller
     {
         // $job = new CreateProduct($request->all());
         // dispatch($job);
-        
+
         Product::create([
             'title' => $request['title'],
             'description' => $request['body_html'],
@@ -85,6 +85,4 @@ class WebhookProductController extends Controller
             'id_product_shopify' => $request['id']
         ]);
     }
-
-    
 }

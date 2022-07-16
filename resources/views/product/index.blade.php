@@ -4,6 +4,7 @@
 <form class="col-md-12" action="{{ route('createWebhook') }}" method="POST">
   <button class="btn btn-primary float-right m-2 mb-2" type="submit">Kích hoạt đồng bộ sản phẩm Shopify</button>
   <input value="{{ $shop_token }}" name="access_token" type="hidden">
+  <input value="{{ $shop_name }}" name="shop_name" type="hidden">
 </form>
 
 <h1>Tên shop: {{ $shop->name }}</h1>

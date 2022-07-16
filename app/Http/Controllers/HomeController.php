@@ -16,10 +16,12 @@ class HomeController extends Controller
 
             $shop_token = $request->session()->get('token');
 
+            $shop_name = $request->session()->get('nameShop');
+
             $shop = Shop::where('access_token', 'like', $shop_token)->first();
 
             $products = $shop->products;
-            return view('product.index', compact('shop', 'products', 'shop_token'));
+            return view('product.index', compact('shop', 'products', 'shop_token', 'shop_name'));
         } else {
             abort(403);
         }

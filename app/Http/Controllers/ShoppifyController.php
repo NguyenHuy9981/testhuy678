@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Image;
-use App\Models\Product;
 use App\Models\Shop;
+use App\Models\Image;
 use GuzzleHttp\Client;
+use App\Models\Product;
 use App\Jobs\CreateProduct;
 use Illuminate\Http\Request;
+use Shopify\Auth\FileSessionStorage;
+
 
 class ShoppifyController extends Controller
 {
@@ -30,7 +32,7 @@ class ShoppifyController extends Controller
 
         $copes = 'read_products,write_products';
         $redirect_uri = '' . config('app.url') . '/testhuy678/authenticate';
-        $url = 'https://' . $request['shop_name'] . '.myshopify.com/admin/oauth/authorize?client_id=' . config('app.api_key') . '&scope=' . $copes . '&redirect_uri=' . $redirect_uri . '';
+        $url = 'https://' . $request['shop_name'] . '.myshopify.com/admin/oauth/authorize?client_id=' . config('app.shopify_api_key') . '&scope=' . config('app.shopify_app_scopes') . '&redirect_uri=' . $redirect_uri . '';
 
         return redirect($url);
     }
@@ -46,8 +48,8 @@ class ShoppifyController extends Controller
         $client = new Client();
         $res_token = $client->request('POST', 'https://' . $shop_name . '/admin/oauth/access_token', [
             'form_params' => [
-                'client_id' => config('app.api_key'),
-                'client_secret' => config('app.api_secret'),
+                'client_id' => config('app.shopify_api_key'),
+                'client_secret' => config('app.shopify_api_secret'),
                 'code' => $code
             ]
         ]);
