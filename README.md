@@ -1,5 +1,5 @@
 ## Setup project tại source
-- Ta cần nhập api & secret key của app vào file .env (Xem cách lấy cụ thể ở phần Setup project tại partner).
+- Ta cần nhập api key & secret key của app vào file .env (Xem cách lấy cụ thể ở phần Setup project tại partner).
 
 - Chạy ngrok cùng port với serve sau đó nhập ngrok url vào (APP_URL) tại .env
 
@@ -14,6 +14,15 @@ Trong giao diện Shopify Partner, vào Apps->apphuytest->Overview để lấy t
 
 
 
-<h2>Apps -> tên app (linhzz)</h2>
+<h2>Store trên shopify</h2>
+Trong giao diện Shopify Partner, vào Store->testhuy678->testhuy678.myshopify.com
+![image](https://user-images.githubusercontent.com/95603815/181416292-b5822b3a-013c-4ff0-a90e-3196cf29e528.png)
+![image](https://user-images.githubusercontent.com/95603815/181416630-9e6173aa-2280-42c9-90c0-7be65d47e469.png)
+![image](https://user-images.githubusercontent.com/95603815/181417612-b19b2ec2-cb88-4062-845b-fdd50d47b9d7.png)
 
-<h3>Sau đó tại Overview -> select store -> click vào store muốn install</h3>
+<h2>App</h2>
+Vào App, nhập tên store (store dùng để test: testhuy678)
+![image](https://user-images.githubusercontent.com/95603815/181418633-b88b6707-9207-4ea2-981d-914d6faaebdc.png)
+
+Sau khi dữ liệu products trên store được lấy về, lúc này nhấn vào
+
