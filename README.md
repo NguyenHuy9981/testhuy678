@@ -24,10 +24,11 @@ Trong giao diện Shopify Partner, vào Store->testhuy678->testhuy678.myshopify.
 
 <h2>App</h2>
 Vào App, nhập tên store (store dùng để test: testhuy678)
+
 - (https://user-images.githubusercontent.com/95603815/181418633-b88b6707-9207-4ea2-981d-914d6faaebdc.png)
 
 Sau khi dữ liệu products trên store được lấy về, lúc này Click vào button đồng bộ, mọi hành động thêm,sửa,xóa sản phẩm trên store sẽ được cập nhật dưới App và ngược lại thông qua Webhook.
 
-(https://user-images.githubusercontent.com/95603815/181421848-57fb3f67-6f9c-4892-9f89-1542827ddfd9.png)
+- (https://user-images.githubusercontent.com/95603815/181421848-57fb3f67-6f9c-4892-9f89-1542827ddfd9.png)
 
 
