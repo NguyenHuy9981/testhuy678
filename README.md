@@ -10,7 +10,8 @@
 
 Trong giao diện Shopify Partner, vào Apps->apphuytest->Overview để lấy thông tin api key & secret key.
 <h3>Ta cần cấu hình lại đường dẫn: App setup -> nhập ngrok url vào App URL và Allowed redirection URL(s)</h3>
-(https://user-images.githubusercontent.com/95603815/181406253-b221cfdd-bc8e-44c7-bada-e3fb96baae1c.png)
+![image](https://user-images.githubusercontent.com/95603815/181414435-0ba5ca68-396c-44f3-bbd6-16bece58c0b2.png)
+
 
 
 <h2>Apps -> tên app (linhzz)</h2>
