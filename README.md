@@ -17,7 +17,7 @@ Trong giao diện Shopify Partner, vào Apps->apphuytest->Overview để lấy t
 <h2>Store trên shopify</h2>
 Trong giao diện Shopify Partner, vào Store->testhuy678->testhuy678.myshopify.com
 ![image](https://user-images.githubusercontent.com/95603815/181416292-b5822b3a-013c-4ff0-a90e-3196cf29e528.png)
-![image](https://user-images.githubusercontent.com/95603815/181416630-9e6173aa-2280-42c9-90c0-7be65d47e469.png)
+![image](https://user-images.githubusercontent.com/95603815/181420558-d35cf880-178b-459e-afa7-6b612cb197b1.png)
 ![image](https://user-images.githubusercontent.com/95603815/181417612-b19b2ec2-cb88-4062-845b-fdd50d47b9d7.png)
 
 <h2>App</h2>
