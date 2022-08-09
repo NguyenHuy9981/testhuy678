@@ -21,7 +21,6 @@ Route::post('/store', [ShoppifyController::class, 'store'])->name('store');
 
 Route::get('/authenticate', [ShoppifyController::class, 'authenticate']);
 
-Route::post('/admin/oauth/access_token', [ShoppifyController::class, 'getshop'])->name('getshop');
 
 
 // Home //
